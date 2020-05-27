@@ -3,17 +3,15 @@
 namespace App\Http\Controllers;
 
 use App\Holiday;
+use Carbon\Carbon;
+use GuzzleHttp\Client;
+use GuzzleHttp\Exception\RequestException;
 use Illuminate\Http\Request;
 
 class HolidayController extends Controller
 {
-    public function getHolidays()
+    public function getHolidaysViaApi()
     {
-        return "Hi";
-    }
 
-    public function getHolidays2()
-    {
-        return "Hi2";
     }
 }
