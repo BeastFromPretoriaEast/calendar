@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <meta name="description" content="Free Web tutorials">
+    <meta name="description" content="A calendar which displays all holidays in South Africa during the year.">
     <meta name="keywords" content="Calendar, Laravel 7, Jquery, MySQL">
     <meta name="author" content="Markus Botha">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -14,7 +14,7 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/dark-mode.css') }}" rel="stylesheet">
 </head>
+
 <body>
-</body>
-</html>

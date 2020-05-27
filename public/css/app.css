@@ -389,7 +389,7 @@ h6,
 
 h1,
 .h1 {
-  font-size: 2.25rem;
+  font-size: 3rem;
 }
 
 h2,
@@ -1814,11 +1814,14 @@ pre code {
   padding: 0.75rem;
   vertical-align: top;
   border-top: 1px solid #dee2e6;
+  text-align: center;
+  width: 14%;
 }
 
 .table thead th {
   vertical-align: bottom;
-  border-bottom: 2px solid #dee2e6;
+  background-color: #EFEFEF;
+  width: 14%;
 }
 
 .table tbody + tbody {
@@ -1841,7 +1844,7 @@ pre code {
 
 .table-bordered thead th,
 .table-bordered thead td {
-  border-bottom-width: 2px;
+    width: 14%;
 }
 
 .table-borderless th,
@@ -4027,6 +4030,7 @@ input[type=button].btn-block {
   position: relative;
   margin-bottom: 0;
   vertical-align: top;
+  cursor: pointer;
 }
 
 .custom-control-label::before {
@@ -7047,7 +7051,7 @@ button.bg-danger:focus {
 }
 
 .bg-light {
-  background-color: #f8f9fa !important;
+  background-color: #EFEFEF !important;
 }
 
 a.bg-light:hover,
