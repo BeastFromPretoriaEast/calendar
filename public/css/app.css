@@ -44,11 +44,23 @@
   box-sizing: border-box;
 }
 
+.op-3 {
+    opacity: 0.3;
+}
+
+.logo-bottom {
+    height: 20px;
+}
+
 html {
   font-family: sans-serif;
   line-height: 1.15;
   -webkit-text-size-adjust: 100%;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+footer {
+    border-top: 1px solid #dee2e6;
 }
 
 article,
@@ -66,13 +78,15 @@ section {
 
 body {
   margin: 0;
-  font-family: "Nunito", sans-serif;
+  font-family: 'Raleway', sans-serif;
   font-size: 0.9rem;
   font-weight: 400;
   line-height: 1.6;
   color: #212529;
   text-align: left;
   background-color: #f8fafc;
+
+    /* font-family: "Nunito", sans-serif; */
 }
 
 [tabindex="-1"]:focus:not(:focus-visible) {
@@ -389,7 +403,8 @@ h6,
 
 h1,
 .h1 {
-  font-size: 3rem;
+    font-size: 3.5rem;
+    margin-top: -5px;
 }
 
 h2,
@@ -4539,6 +4554,7 @@ input[type=button].btn-block {
   align-items: center;
   justify-content: space-between;
   padding: 0.5rem 1rem;
+  border-bottom: 1px solid #dee2e6;
 }
 
 .navbar .container,
@@ -5376,6 +5392,12 @@ a.badge:focus {
 .badge-primary {
   color: #fff;
   background-color: #3490dc;
+  padding: 0.3rem 0.4rem !important;
+  cursor: pointer;
+}
+
+.badge-primary:hover {
+    background-color: #2176bd;
 }
 
 a.badge-primary:hover,
@@ -6179,6 +6201,10 @@ a.close.disabled {
 
 .toast-body {
   padding: 0.75rem;
+}
+
+.logo {
+    height: 40px;
 }
 
 .modal-open {
@@ -8578,6 +8604,7 @@ button.bg-dark:focus {
 
 .p-1 {
   padding: 0.25rem !important;
+
 }
 
 .pt-1,

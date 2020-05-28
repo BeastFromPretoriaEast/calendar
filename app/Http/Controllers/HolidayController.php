@@ -9,12 +9,14 @@ class HolidayController extends Controller
 {
     public function index()
     {
+        $holidays = Holiday::sortHolidaysByMonth();
         $months = Holiday::generateCalendarData();
         $year = Carbon::now()->format('Y');
 
         return view('calendar', [
-            'year' => $year,
+            'holidays' => $holidays,
             'months' => $months,
+            'year' => $year,
         ]);
     }
 }

@@ -29,3 +29,34 @@
     color: #CCC;
     border: 1px solid #333;
 }
+
+[data-theme="dark"] h1 {
+    color: #CCC;
+}
+
+[data-theme="dark"] h3 {
+    color: #3490dc;
+}
+
+[data-theme="dark"] small {
+    color: #CCC;
+}
+
+[data-theme="dark"] .card {
+    background-color: transparent;
+    border-color: #3490dc;
+}
+
+[data-theme="dark"] hr {
+    border-color: #3490dc;
+}
+
+[data-theme="dark"] footer {
+    border-top: 1px solid #3490dc;
+}
+
+[data-theme="dark"] .navbar {
+    border-bottom: 1px solid #3490dc;
+}
+
+

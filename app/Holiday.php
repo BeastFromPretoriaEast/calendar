@@ -76,9 +76,13 @@ class Holiday extends Model
     public static function createCalendarsViaTemplate($daysByMonthInYear)
     {
         foreach ($daysByMonthInYear as $month => $monthData):
+
+            $increment = 0;
+
             $months[$month] = View::make('includes.monthTemplate', [
                                         'month' => $month,
                                         'monthData' => $monthData,
+                                        'increment' => $increment,
                                      ])->render();
         endforeach;
 
