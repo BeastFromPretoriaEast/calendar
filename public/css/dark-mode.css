@@ -42,6 +42,22 @@
     color: #CCC;
 }
 
+[data-theme="dark"] .popover-body {
+    background-color: #333 !important;
+    color: #CCC;
+    border: 1px solid #333;
+}
+
+[data-theme="dark"] .bs-popover-top .arrow::after {
+    border-top-color: #333;
+}
+
+[data-theme="dark"] .bs-popover-auto[x-placement^="top"] .arrow::after {
+    border-top-color: #333;
+}
+
+
+
 [data-theme="dark"] .card {
     background-color: transparent;
     border-color: #3490dc;
