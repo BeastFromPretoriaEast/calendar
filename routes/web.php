@@ -13,5 +13,5 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', 'HolidayController@index');
+Route::get('/', 'HolidayController@index')->name('calendar');
 Route::get('/downloadPDF','HolidayController@downloadPDF')->name('download.pdf');
