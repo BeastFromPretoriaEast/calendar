@@ -9,6 +9,9 @@ use Illuminate\Support\Facades\View;
 
 class HolidayController extends Controller
 {
+    /**
+     * HolidayController constructor.
+     */
     public function __construct()
     {
         $holidays = Holiday::sortHolidaysByMonth();
@@ -18,6 +21,9 @@ class HolidayController extends Controller
         View::share('year', $year);
     }
 
+    /**
+     * The page that displays calendar
+     */
     public function index()
     {
         $months = Holiday::generateCalendarData();
@@ -27,6 +33,9 @@ class HolidayController extends Controller
         ]);
     }
 
+    /**
+     * The page that generates a pdf of the calendar
+     */
     public function downloadPDF()
     {
         $printPdf = true;

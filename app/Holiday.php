@@ -19,19 +19,30 @@ class Holiday extends Model
         'name',
     ];
 
+    /**
+     * Generates the html/data which will be used to populated the calendar view
+     *
+     * @param bool $printPdf
+     * @return mixed
+     */
     public static function generateCalendarData($printPdf = false)
     {
         $daysByMonthInYear = self::sortDaysByMonthInYear();
-
         $htmlMonths = self::createCalendarsViaTemplate($daysByMonthInYear, $printPdf);
 
         return $htmlMonths;
     }
 
+    /**
+     * Fetches all holiday data from the database then sorts the data by month
+     *
+     * @return mixed
+     */
     public static function sortHolidaysByMonth()
     {
         $holidays = self::all();
 
+        // Creates an associative array with days by months as keys, and the holiday name as the value.
         foreach ($holidays as $holiday):
             $month = date("F",strtotime($holiday['date']));
             $day = date("j",strtotime($holiday['date']));
@@ -42,6 +53,12 @@ class Holiday extends Model
         return $holidaysByMonth;
     }
 
+    /**
+     * Runs though all of the days in the year and assigns the holidays where necessary
+     * Assigns data used in the calendar monthly template to generate html calendars
+     *
+     * @return mixed
+     */
     public static function sortDaysByMonthInYear()
     {
         $year = Carbon::now()->format('Y');
@@ -56,9 +73,9 @@ class Holiday extends Model
             $data[$month]['firstWeekday']['name'] =  $firstWeekdayOfTheMonthName;
             $data[$month]['firstWeekday']['number'] =  $firstWeekdayOfTheMonthNumber;
 
-            for ($d = 1; $d <= $amountOfDaysInMonth; $d++) {
+            for ($d = 1; $d <= $amountOfDaysInMonth; $d++):
                 $data[$month]['days'][$d] = null;
-            }
+            endfor;
         endforeach;
 
         $holidays = self::sortHolidaysByMonth();
@@ -72,6 +89,13 @@ class Holiday extends Model
         return $data;
     }
 
+    /**
+     * Generates each month's html calendar and places it in an associative array
+     *
+     * @param $daysByMonthInYear
+     * @param bool $printPdf
+     * @return mixed
+     */
     public static function createCalendarsViaTemplate($daysByMonthInYear, $printPdf = false)
     {
         foreach ($daysByMonthInYear as $month => $monthData):
@@ -89,12 +113,13 @@ class Holiday extends Model
         return $months;
     }
 
-    public static function getIsoWeeksInYear($year = 2020) {
-        $date = new DateTime;
-        $date->setISODate($year, 53);
-        return ($date->format("W") === "53" ? 53 : 52);
-    }
-
+    /**
+     * This method makes an API call the external url which provides the system with the year's holidays
+     * The retrieved data is then stored in the database
+     *
+     * @param null $year
+     * @throws \GuzzleHttp\Exception\GuzzleException
+     */
     public static function getAndSaveHolidaysViaApi($year = null)
     {
         $out = new ConsoleOutput();
@@ -151,7 +176,7 @@ class Holiday extends Model
         } catch (RequestException $e) {
 
             // Catch the instance of GuzzleHttp\Psr7\Response. Has its own 'Message' trait's methods.
-            if ($e->hasResponse()) {
+            if ($e->hasResponse()):
                 $response = $e->getResponse();
                 var_dump($response->getStatusCode()); // HTTP status code;
                 var_dump($response->getReasonPhrase()); // Response message;
@@ -160,10 +185,11 @@ class Holiday extends Model
                 var_dump($response->getHeaders()); // Headers array;
                 var_dump($response->hasHeader('Content-Type')); // Is the header presented?
                 var_dump($response->getHeader('Content-Type')[0]); // Concrete header value;
-            }
+            endif;
 
         }
 
+        // if response has values remove all current holiday data and add the new holiday data
         if(!empty($holidaysArr)):
             self::truncate();
             self::insert($holidaysArr);
@@ -175,6 +201,5 @@ class Holiday extends Model
 
         $out->writeln($message);
         $out->writeln('Console job completed.');
-
     }
 }
