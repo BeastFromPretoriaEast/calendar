@@ -17,7 +17,7 @@
                     </button>
                 </li>
                 <li class="nav-item mt-lg-0 mt-md-3">
-                    <button class="btn btn-outline-primary my-2 my-sm-0" type="submit">Print Calendar</button>
+                    <a href="{{ route('download.pdf') }}" target="_blank" class="btn btn-outline-primary my-2 my-sm-0" type="submit">Print Calendar</a>
                 </li>
             </ul>
 

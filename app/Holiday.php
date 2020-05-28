@@ -20,11 +20,11 @@ class Holiday extends Model
         'name',
     ];
 
-    public static function generateCalendarData()
+    public static function generateCalendarData($printPdf = false)
     {
         $daysByMonthInYear = self::sortDaysByMonthInYear();
 
-        $htmlMonths = self::createCalendarsViaTemplate($daysByMonthInYear);
+        $htmlMonths = self::createCalendarsViaTemplate($daysByMonthInYear, $printPdf);
 
         return $htmlMonths;
     }
@@ -73,17 +73,18 @@ class Holiday extends Model
         return $data;
     }
 
-    public static function createCalendarsViaTemplate($daysByMonthInYear)
+    public static function createCalendarsViaTemplate($daysByMonthInYear, $printPdf = false)
     {
         foreach ($daysByMonthInYear as $month => $monthData):
 
             $increment = 0;
 
             $months[$month] = View::make('includes.monthTemplate', [
-                                        'month' => $month,
-                                        'monthData' => $monthData,
-                                        'increment' => $increment,
-                                     ])->render();
+                                    'month' => $month,
+                                    'monthData' => $monthData,
+                                    'increment' => $increment,
+                                    'printPdf' => $printPdf
+                                 ])->render();
         endforeach;
 
         return $months;

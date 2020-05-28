@@ -14,3 +14,4 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', 'HolidayController@index');
+Route::get('/downloadPDF','HolidayController@downloadPDF')->name('download.pdf');

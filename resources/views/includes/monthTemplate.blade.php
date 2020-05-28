@@ -39,13 +39,20 @@
             @if($increment == 1)
                 <tr>
             @endif
-                    <td>
-                        @if($holiday)
-                            <span class="badge badge-primary" data-container="body" data-toggle="popover" data-placement="top" data-content="{{ $holiday }}">{{ $day }}</span>
-                        @else
+                    @if($printPdf)
+                        <td @if($holiday) class="bg-primary text-white" @endif>
                             {{ $day }}
-                        @endif
-                    </td>
+                        </td>
+                    @else
+                        <td>
+                            @if($holiday)
+                                <span class="badge badge-primary" data-container="body" data-toggle="popover" data-placement="top" data-content="{{ $holiday }}">{{ $day }}</span>
+                            @else
+                                {{ $day }}
+                            @endif
+                        </td>
+                    @endif
+
             @if($increment == 7)
                 @php
                     $increment = 0
