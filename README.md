@@ -1,6 +1,4 @@
-##<h1>MDS Tech: Calendar Assignment</h1>
-
-##The Assignment
+<h1>MDS Tech: Calendar Assignment</h1>
 
 Create a small app that fetches South African public holidays for a year and displays them on a page:
 
