@@ -22,11 +22,11 @@ The first view displays a calendar that contains all the months of the year.
 All the holidays will be displayed where applicable.
 The second view generates a printable Pdf file which also displays the months of the year with all the holidays displayed.
 
-In order to populate the database with the necessary data (holidays) you will need to run the custom console command ``` holidays:fetch ``` in your terminal.
+In order to populate the database with the necessary data (holidays) you will need to run the custom console command ``` php artisan holidays:fetch ``` in your terminal.
 
 Once the command has been run you can visit the calendar page which is set as the web application's homepage ``` URI = '/' ```.
 
-The site is responsive and makes use of a myriad of bootstrap 4's features.
+The site is responsive and makes use of a myriad of Bootstrap 4's features.
 ##
 Thank you for taking the time to view my application. I aim to impress and hopefully make your short-list. 
 

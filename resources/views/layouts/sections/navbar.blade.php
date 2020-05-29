@@ -12,12 +12,12 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item mt-lg-0 mt-md-3 mr-3">
-                    <button class="btn btn-outline-primary my-2 my-sm-0" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+                    <button class="btn @if($holidays) btn-outline-primary @else btn-outline-secondary disabled @endif my-2 my-sm-0" @if(!$holidays) disabled @endif type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
                         Display Holidays
                     </button>
                 </li>
                 <li class="nav-item mt-lg-0 mt-md-3">
-                    <a href="{{ route('download.pdf') }}" target="_blank" class="btn btn-outline-primary my-2 my-sm-0" type="submit">Print Calendar</a>
+                    <a href="{{ route('download.pdf') }}" target="_blank" class="btn @if($holidays) btn-outline-primary @else btn-outline-secondary disabled @endif my-2 my-sm-0" @if(!$holidays) disabled @endif>Print Calendar</a>
                 </li>
             </ul>
 

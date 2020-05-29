@@ -42,6 +42,8 @@ class Holiday extends Model
     {
         $holidays = self::all();
 
+        $holidaysByMonth = null;
+
         // Creates an associative array with days by months as keys, and the holiday name as the value.
         foreach ($holidays as $holiday):
             $month = date("F",strtotime($holiday['date']));
@@ -50,7 +52,7 @@ class Holiday extends Model
             $holidaysByMonth[$month][$day] = $holiday['name'];
         endforeach;
 
-        return $holidaysByMonth;
+        return $holidaysByMonth ?? null;
     }
 
     /**
@@ -80,11 +82,13 @@ class Holiday extends Model
 
         $holidays = self::sortHolidaysByMonth();
 
-        foreach ($holidays as $month => $holiday):
-            foreach ($holiday as $date => $name):
-                $data[$month]['days'][$date] = $name;
+        if(!empty($holidays)):
+            foreach ($holidays as $month => $holiday):
+                foreach ($holiday as $date => $name):
+                    $data[$month]['days'][$date] = $name;
+                endforeach;
             endforeach;
-        endforeach;
+        endif;
 
         return $data;
     }
